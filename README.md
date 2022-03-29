@@ -31,12 +31,12 @@ My task is to perform employee research, specifically to find answers to the bel
 2. How many vacancies need to be filled when the employees retire.
 
 PH has been mainly using excel and VBA to work with data, hence their data is mainly aggregated in 6 csv files:
- * [employees.csv](data/employees.csv)
- * [departments.csv](data/departments.csv)
- * [dept_emp.csv](data/dept_emp.csv)
- * [dept_manager.csv](data/dept_manager.csv)
- * [titles.csv](data/titles.csv)
- * [salaries.csv](data/salaries.csv)
+ * [employees.csv](Data/employees.csv)
+ * [departments.csv](Data/departments.csv)
+ * [dept_emp.csv](Data/dept_emp.csv)
+ * [dept_manager.csv](Data/dept_manager.csv)
+ * [titles.csv](Data/titles.csv)
+ * [salaries.csv](Data/salaries.csv)
 
 We have used **SQL for our analysis** and created an employee database using SQL by applying data madelling engineering and analysis skills. For this purpose we are using the below applcations for our analysis:
 1. **QuickDBD** - to create an **entity relationship diagram (ERD)** which is a flowchart that highlights different tables and their relationships to each other.
@@ -121,7 +121,7 @@ order by count desc;
 
 
 Output: <br>
-[retiring_titles.csv](Challenge_Output/delivery1/retiring_titles.csv) stores the required output in csv. 
+[retiring_titles.csv](Challenge_Output/Delivery1/retiring_titles.csv) stores the required output in csv. 
 
 From the above output image we can conclude the following:
 
@@ -159,7 +159,7 @@ ORDER BY e.emp_no;
 
 
 Output: <br>
-[mentorship_eligibilty.csv](Challenge_Output/delivery2/mentorship_eligibilty.csv) stores the required output in csv. 
+[mentorship_eligibilty.csv](Challenge_Output/Delivery2/mentorship_eligibilty.csv) stores the required output in csv. 
 
 From the above output image we can conclude that there are only **1,549** employees eligible for the Mentorship program. This is a low number of employees eligible compared to the large number of employees retiring. Hence Pewlett Hackard will have to make future plans to may be hire more employees. 
 
@@ -169,7 +169,7 @@ From the above output image we can conclude that there are only **1,549** employ
 **How many roles will need to be filled as the "silver tsunami" begins to make an impact?**
 Since a large number of employees are soon to retire, a good planning is essential in order to understand how many roles will need to be filled. In order to get a clear insight, I aggregated the data for every department and title. 'Count' is the number of roles that need to be filled in for each title in every department. This report will be helpful to the managers in every department to to plan ahead. 
 
-Below is the snapshot of this [Query](queries/Employee_Database_challenge.sql):
+Below is the snapshot of this [Query](Queries/Employee_Database_challenge.sql):
 
 <p align="center"> <kbd> <img style="border:5px solid black;" src = "Images/dept_title.png" width ="95%" "> </kbd> </p>  
 	<p align="center"> <i><b> Number of retiring employees per department and title</b></i> </p>
