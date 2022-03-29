@@ -56,7 +56,7 @@ Below is the **entity relationship diagram (ERD)** of the database. We have crea
 ### <a name="ret"></a>Total number of retiring employees
 In order to get the total number of retiring employees in **Pewlett-Hackard**, we need to filter the employees who were born in the years 1952 to 1955.
 
-Query:
+**Query:**
 
 ```
 -- Number of employees retiring
@@ -81,7 +81,7 @@ Below is a snapshot of the output:
 Total employees in the organization: **3,00,024**
 Total number of retiring employees are the employees born between 'January 1, 1952 and December 31, 1955': **72,458**
 
-Query :
+**Query:**
 
 ```
 -- Retrieve the retireing employees information
@@ -120,7 +120,7 @@ order by count desc;
 <p align="center"> <i><b>Number of retiring employees per Title</b></i> </p>
 
 
-Output: <br>
+**Output:** <br>
 [retiring_titles.csv](Data/Challenge_Output/delivery1/retiring_titles.csv) stores the required output in csv. 
 
 From the above output image we can conclude the following:
@@ -139,6 +139,7 @@ Since a huge number of employees are retiring soon, *Pewlett-Hackard** is planni
 
 Using the below query we are filtering the current employees and their imformation (to_date = "9999-01-01") who were born between January 1, 1965 and December 31, 1965.
 
+**Query:**
 ```
 SELECT distinct on (e.emp_no) e.emp_no, e.first_name,
 e.last_name , e.birth_date,
@@ -158,7 +159,7 @@ ORDER BY e.emp_no;
 <p align="center"> <i><b>Employees eligible for mentorship program</b></i> </p>
 
 
-Output: <br>
+**Output:** <br>
 [mentorship_eligibilty.csv](Data/Challenge_Output/delivery2/mentorship_eligibilty.csv) stores the required output in csv. 
 
 From the above output image we can conclude that there are only **1,549** employees eligible for the Mentorship program. This is a low number of employees eligible compared to the large number of employees retiring. Hence Pewlett Hackard will have to make future plans to may be hire more employees. 
@@ -174,7 +175,7 @@ Below is the snapshot of this [Query](Queries/Employee_Database_challenge.sql):
 <p align="center"> <kbd> <img style="border:5px solid black;" src = "Images/dept_title.png" width ="95%" "> </kbd> </p>  
 	<p align="center"> <i><b> Number of retiring employees per department and title</b></i> </p>
 
-Output: <br>
+**Output:** <br>
 [dept_title_ret.csv](Data/Challenge_Output/delivery3/dept_title_ret.csv) stores the required output in csv. 
 
  
