@@ -59,6 +59,29 @@ and de.to_date = ('9999-01-01')
 ORDER BY e.emp_no;
 
 ------------------------------------------------------------------------------------------------------------
-Extra Queries
+-- Delivery 3
 ------------------------------------------------------------------------------------------------------------
 
+-- get the total number of employees retiring
+SELECT e.emp_no,
+    e.first_name,
+    e.last_name,
+    de.to_date, de.dept_no
+ 	INTO retiring_emp
+	FROM employees as e
+    LEFT JOIN dept_emp as de
+    ON e.emp_no = de.emp_no
+	WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+    and de.to_date = ('9999-01-01');
+
+-- get the retiring employees by department and title.
+SELECT d.dept_name,t.title,count(ce.emp_no) 
+    into dept_title  
+    FROM retiring_emp as ce
+    left join titles as t
+    on t.emp_no = ce.emp_no
+    left join departments as d
+    on ce.dept_no = d.dept_no
+    where t.to_date = '9999-01-01'
+    GROUP BY d.dept_name,t.title
+    ORDER BY count(ce.emp_no) desc;

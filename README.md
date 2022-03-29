@@ -7,9 +7,9 @@ Identifying Data Relationships with PostgreSQL and pgAdmin.
   * [Purpose](#purpose)
 - [ERD of Database](#erd)
 - [Results](#results)
+    * [Total Number of retiring Employees](#ret)
     * [Total number of retiring employees per title](#retempl)
     * [The Employees Eligible for the Mentorship Program](#mentor)
-    * [Election Results per County](#CountyResults)
 - [Analysis Summary](#Summary)
 - [Resources](#resources)
 
@@ -21,7 +21,7 @@ Identifying Data Relationships with PostgreSQL and pgAdmin.
 1. Offering retirement package for those who meet certain criteria
 2. It is starting to think which positions will need to be filled in near future.
 
-***Hence PH needs to look ahead in future and prepare for the vacancies.***
+***Hence Pewlett-Hackard (PH) needs to look ahead in future and prepare for the vacancies.***
 
 
 ### <a name="Purpose"></a>Purpose
@@ -31,14 +31,14 @@ My task is to perform employee research, specifically to find answers to the bel
 2. How many vacancies need to be filled when the employees retire.
 
 PH has been mainly using excel and VBA to work with data, hence their data is mainly aggregated in 6 csv files:
- * employees.csv
- * departments.csv
- * dept_emp.csv
- * dept_manager.csv
- * titles.csv
- * salaries.csv
+ * [employees.csv](data/employees.csv)
+ * [departments.csv](data/departments.csv)
+ * [dept_emp.csv](data/dept_emp.csv)
+ * [dept_manager.csv](data/dept_manager.csv)
+ * [titles.csv](data/titles.csv)
+ * [salaries.csv](data/salaries.csv)
 
-We have used SQL for our analysis and created an employee database using SQL by applying data madelling engineering and analysis skills. For this purpose we are using the below applcations for our analysis:
+We have used **SQL for our analysis** and created an employee database using SQL by applying data madelling engineering and analysis skills. For this purpose we are using the below applcations for our analysis:
 1. **QuickDBD** - to create an **entity relationship diagram (ERD)** which is a flowchart that highlights different tables and their relationships to each other.
 2. **PostgreSQL**- It is a relational database system, which consists of tables and their predefined relationships.
 3. **pgAdmin** - It is the window into our database: it's where queries are written and executed and where results are viewed.
@@ -47,14 +47,39 @@ We have used SQL for our analysis and created an employee database using SQL by 
 
 Below is the **entity relationship diagram (ERD)** of the database. We have created this using **QuickDBD**. It is a cenceptual design of the database tables, detailing the columns, data types of every column, keys and constraints. It does not contain any data, and lets us understand the relationship between all the tables.
 
-<p align="center"> <img src = "Images/erd.png" width ="45%"> </p>
+<p align="center"> <img style="border:5px solid black;" src = "Images/erd.png" width ="45%"> </p>
+<p align="center"> <i>ERD of Database</i> </p>
+
      
 ## <a name="results"></a>Results
 
-## <a name="retempl">Total number of retiring employees per title
+### <a name="ret"></a>Total number of retiring employees
+In order to get the total number of retiring employees in **Pewlett-Hackard**, we need to filter the employees who were born in the years 1952 to 1955.
+
+Query:
+
+```
+-- Number of employees retiring
+SELECT e.emp_no,
+    e.first_name,
+    e.last_name,
+    de.to_date, de.dept_no
+ 	INTO retiring_emp
+	FROM employees as e
+    LEFT JOIN dept_emp as de
+    ON e.emp_no = de.emp_no
+	WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+    and de.to_date = ('9999-01-01');
+```
+Below is a snapshot of the output:
+<p align="center"> <img style="border:5px solid black;" src = "Images/ret.png" width ="45%"> </p>
+
+<p align="center"> <i>Total Number of employees retiring</i> </p>
+
+### <a name="retempl"></a>Total number of retiring employees per title
 
 Total employees in the organization: **3,00,024**
-Total number of retiring employees are the employees born between 'January 1, 1965 and December 31, 1965': **72,458**
+Total number of retiring employees are the employees born between 'January 1, 1952 and December 31, 1955': **72,458**
 
 Query :
 
@@ -90,10 +115,13 @@ group by title
 order by count desc;
 ```
 
-<p align="center"> <img src = "Images/query1.png" width ="45%"> </p>
+<p align="center"> <img style="border:5px solid black;" src = "Images/query1.png" width ="45%"> </p>
+
+<p align="center"> <i>Number of retiring employees per Title</i> </p>
+
 
 Output: <br>
-[retiring_titles.csv](Challenge_Output/retiring_titles.csv) stores the required output in csv. 
+[retiring_titles.csv](Challenge_Output/delivery1/retiring_titles.csv) stores the required output in csv. 
 
 From the above output image we can conclude the following:
 
@@ -126,23 +154,33 @@ WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 and de.to_date = ('9999-01-01')
 ORDER BY e.emp_no;
 ```
-<kbd> <p align="center"> <img src = "Images/query2.png" width ="45%" title = "Query2 Output"> </p> </kbd> 
+  <p align="center"> <img style="border:5px solid black;" src = "Images/query2.png" width ="45%" title = "Query2 Output"> </p> </kbd> 
+  <p align="center"> <i>Employees eligible for mentorship program</i> </p>
+
 
 Output: <br>
-[mentorship_eligibilty.csv](Challenge_Output/mentorship_eligibilty.csv) stores the required output in csv. 
+[mentorship_eligibilty.csv](Challenge_Output/delivery2/mentorship_eligibilty.csv) stores the required output in csv. 
 
 From the above output image we can conclude that there are only **1,549** employees eligible for the Mentorship program. This is a low number of employees eligible compared to the large number of employees retiring. Hence Pewlett Hackard will have to make future plans to may be hire more employees. 
 
 
 ## <a name="Summary"></a>Analysis Summary
-Provide high-level responses to the following questions, then provide two additional queries or tables that may provide more insight into the upcoming "silver tsunami."
 
 **How many roles will need to be filled as the "silver tsunami" begins to make an impact?**
-In order to understand how many roles will need to be filled, I aggregated the data for every department and title.
-Below is the output of this query:
+Since a large number of employees are soon to retire, a good planning is essential in order to understand how many roles will need to be filled. In order to get a clear insight, I aggregated the data for every department and title. 'Count' is the number of roles that need to be filled in for each title in every department. This report will be helpful to the managers in every department to to plan ahead. 
 
+Below is the snapshot of this [Query](queries/Employee_Database_challenge.sql):
 
-Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
+<p align="center"> <img style="border:5px solid black;" src = "Images/dept_title.png" width ="45%" "> </p>  
+<p align="center"> <i>Number of retiring employees per department and title</i> </p>
+
+Output: <br>
+[dept_title_ret.csv](Challenge_Output/delivery3/dept_title_ret.csv) stores the required output in csv. 
+
+ 
+**Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?**
+
+In the analysis above we had concluded that there are only **1,549** employees eligible for the Mentorship program. Since this number is very small as compared to the the number of employees retiring, we can conclude that there are retirement-ready employees in the departments to mentor the next generation.
 
 
 ## <a name="resources"></a> Resources
