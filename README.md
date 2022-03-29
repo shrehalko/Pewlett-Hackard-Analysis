@@ -121,7 +121,7 @@ order by count desc;
 
 
 Output: <br>
-[retiring_titles.csv](Challenge_Output/Delivery1/retiring_titles.csv) stores the required output in csv. 
+[retiring_titles.csv](Data/Challenge_Output/delivery1/retiring_titles.csv) stores the required output in csv. 
 
 From the above output image we can conclude the following:
 
@@ -159,7 +159,7 @@ ORDER BY e.emp_no;
 
 
 Output: <br>
-[mentorship_eligibilty.csv](Challenge_Output/Delivery2/mentorship_eligibilty.csv) stores the required output in csv. 
+[mentorship_eligibilty.csv](Data/Challenge_Output/delivery2/mentorship_eligibilty.csv) stores the required output in csv. 
 
 From the above output image we can conclude that there are only **1,549** employees eligible for the Mentorship program. This is a low number of employees eligible compared to the large number of employees retiring. Hence Pewlett Hackard will have to make future plans to may be hire more employees. 
 
@@ -175,7 +175,7 @@ Below is the snapshot of this [Query](Queries/Employee_Database_challenge.sql):
 	<p align="center"> <i><b> Number of retiring employees per department and title</b></i> </p>
 
 Output: <br>
-[dept_title_ret.csv](Challenge_Output/delivery3/dept_title_ret.csv) stores the required output in csv. 
+[dept_title_ret.csv](Data/Challenge_Output/delivery3/dept_title_ret.csv) stores the required output in csv. 
 
  
 **Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?**
