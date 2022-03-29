@@ -47,8 +47,8 @@ We have used **SQL for our analysis** and created an employee database using SQL
 
 Below is the **entity relationship diagram (ERD)** of the database. We have created this using **QuickDBD**. It is a cenceptual design of the database tables, detailing the columns, data types of every column, keys and constraints. It does not contain any data, and lets us understand the relationship between all the tables.
 
-<p align="center"> <img style="border:5px solid black;" src = "Images/erd.png" width ="45%"> </p>
-<p align="center"> <i>ERD of Database</i> </p>
+<p align="center"> <kbd> <img style="border:5px solid black;" src = "Images/erd.png" width ="45%"> </kbd> </p>
+<p align="center"> <b> <i>ERD of Database</i></b> </p>
 
      
 ## <a name="results"></a>Results
@@ -72,9 +72,9 @@ SELECT e.emp_no,
     and de.to_date = ('9999-01-01');
 ```
 Below is a snapshot of the output:
-<p align="center"> <img style="border:5px solid black;" src = "Images/ret.png" width ="45%"> </p>
+<p align="center"> <kbd> <img src = "Images/ret.png" width ="95%"> </kbd> </p>
 
-<p align="center"> <i>Total Number of employees retiring</i> </p>
+<p align="center"> <i><b>Total Number of employees retiring</b></i> </p>
 
 ### <a name="retempl"></a>Total number of retiring employees per title
 
@@ -115,9 +115,9 @@ group by title
 order by count desc;
 ```
 
-<p align="center"> <img style="border:5px solid black;" src = "Images/query1.png" width ="45%"> </p>
+<p align="center"> <kbd> <img src = "Images/query1.png" width = "95%" > </kbd> </p>
 
-<p align="center"> <i>Number of retiring employees per Title</i> </p>
+<p align="center"> <i><b>Number of retiring employees per Title</b></i> </p>
 
 
 Output: <br>
@@ -154,8 +154,8 @@ WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 and de.to_date = ('9999-01-01')
 ORDER BY e.emp_no;
 ```
-  <p align="center"> <img style="border:5px solid black;" src = "Images/query2.png" width ="45%" title = "Query2 Output"> </p> </kbd> 
-  <p align="center"> <i>Employees eligible for mentorship program</i> </p>
+  <p align="center"><kbd> <img style="border:5px solid black;" src = "Images/query2.png" width ="95%" ></kbd> </p> 
+<p align="center"> <i><b>Employees eligible for mentorship program</b></i> </p>
 
 
 Output: <br>
@@ -171,8 +171,8 @@ Since a large number of employees are soon to retire, a good planning is essenti
 
 Below is the snapshot of this [Query](queries/Employee_Database_challenge.sql):
 
-<p align="center"> <img style="border:5px solid black;" src = "Images/dept_title.png" width ="45%" "> </p>  
-<p align="center"> <i>Number of retiring employees per department and title</i> </p>
+<p align="center"> <kbd> <img style="border:5px solid black;" src = "Images/dept_title.png" width ="95%" "> </kbd> </p>  
+	<p align="center"> <i><b> Number of retiring employees per department and title</b></i> </p>
 
 Output: <br>
 [dept_title_ret.csv](Challenge_Output/delivery3/dept_title_ret.csv) stores the required output in csv. 
